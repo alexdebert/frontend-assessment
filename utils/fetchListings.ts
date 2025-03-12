@@ -1,10 +1,12 @@
-import getConfig from 'next/config';
-const { publicRuntimeConfig } = getConfig();
-
 export async function fetchListings() {
-    const response = await fetch(`${publicRuntimeConfig.baseUrl}/listings-mock.json`);
+    const isServer = typeof window === 'undefined';
+    const url = isServer
+        ? `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/listings-mock.json`
+        : '/listings-mock.json';
+
+    const response = await fetch(url);
     if (!response.ok) {
-        return 'Failed to fetch listings';
+        throw new Error('Failed to fetch data');
     }
-    return await response.json();
+    return response.json();
 }

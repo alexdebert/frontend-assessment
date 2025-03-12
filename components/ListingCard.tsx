@@ -1,3 +1,5 @@
+'use client'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import {ListProps} from "../types/types";
 
@@ -6,6 +8,7 @@ export default function ListingCard({
 }: {
     listing: ListProps
 }) {
+    const router = useRouter()
     return (
         <article key={listing.Id} className="flex max-w-xl flex-col items-start justify-between">
             <Image
@@ -23,6 +26,7 @@ export default function ListingCard({
                 <p className="text-3xl tracking-tight text-gray-900">${listing["Sale Price"]}</p>
             </div>
             <button
+                onClick={() => router.push(`/listing/${listing.Id}`)}
                 className="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden">
                 View Details
             </button>
