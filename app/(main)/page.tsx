@@ -7,7 +7,7 @@ import { fetchListings } from '../../utils/fetchListings';
 export default function ListingsPage() {
     const listings = fetchListings();
     return (
-        <div>
+        <div className="w-full">
             <div className="mx-auto max-w-2xl lg:mx-0">
                 <h1 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">Listings</h1>
             </div>
