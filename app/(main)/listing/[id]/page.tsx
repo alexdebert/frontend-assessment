@@ -27,7 +27,7 @@ function ListingContent({ id }) {
                 const selectedListing = data.find((item) => item.Id === parseInt(id));
                 setListing(selectedListing);
             })
-            .catch((error) => {
+            .catch(() => {
                 throw new Error('Failed to fetch listing details');
             });
     }, [id]);

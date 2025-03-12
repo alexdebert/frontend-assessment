@@ -1,12 +1,21 @@
 'use client'
 import * as React from 'react';
+import {ReactNode} from "react";
 
-export default class ErrorBoundary extends React.Component<any, any> {
+interface Props {
+    children: ReactNode;
+}
+
+interface State {
+    hasError: boolean;
+}
+
+export default class ErrorBoundary extends React.Component<Props, State> {
     constructor(props) {
         super(props)
         this.state = { hasError: false }
     }
-    static getDerivedStateFromError(error) {
+    static getDerivedStateFromError() {
         return { hasError: true }
     }
     componentDidCatch(error, errorInfo) {
