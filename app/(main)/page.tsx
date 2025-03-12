@@ -8,7 +8,9 @@ export default function ListingsPage() {
     const listings = fetchListings();
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-4">Listings</h1>
+            <div className="mx-auto max-w-2xl lg:mx-0">
+                <h1 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">Listings</h1>
+            </div>
             <ErrorBoundary>
                 <Suspense fallback={<Loading />}>
                     <Listings listings={listings}/>
