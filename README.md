@@ -1,8 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -16,21 +20,52 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Information
 
-To learn more about Next.js, take a look at the following resources:
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To complete all the tasks I used the following libraries:
+- Tailwind for the styling and design
+- Formik for the form implementation
+- Yup for the form validation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For the architecture structure, I applied basic implementation from Next.js documentation with the following
+```bash
+listings-app/
+├── app/
+│   ├── (main)/                # Optional route group for main layout
+│   │   ├── page.tsx           # Home page (Listings Page)
+│   │   └── listing/           # Dynamic route for listing details
+│   │       └── [id]/          # Dynamic segment for listing ID
+│   │           └── page.tsx   # Listing details page
+│   ├── error.tsx              # Global error page
+│   ├── layout.tsx             # Global layout for the app
+│   └── not-found.tsx          # Global 404 page
+│
+├── components/                # Reusable components
+│   ├── CardDetail.tsx         # Single card detail UI component
+│   ├── ContactForm.js         # Contact Agent form UI component
+│   ├── ErrorBoundary.js       # Error Boundary UI component
+│   ├── FilterSection.js       # Filter section UI component
+│   ├── ListingCard.js         # Single UI component that displays information from 1 element of the list in the main screen
+│   ├── ListingCardDetails.js  # Entire card details UI component
+│   ├── Listings.js            # UI component that displays a list of elements
+│   └── Loading.js             # Loading fallback UI
+│
+├── public/                    # Static assets
+│   ├── listings.json          # Local JSON data
+│   └── ...                    # Other static assets
+│
+├── styles/                    # Global styles
+│   └── globals.css            # Tailwind CSS
+│
+├── types/                     # Typing
+│   └── types.ts               # Typescript file for listings typing
+│
+├── utils/                     # Utility functions
+│   └── fetchListings.js       # Fetch listings data
+└── ...                        # Configuration files
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
